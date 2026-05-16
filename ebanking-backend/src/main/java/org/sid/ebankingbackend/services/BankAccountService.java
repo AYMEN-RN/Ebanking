@@ -1,9 +1,6 @@
 package org.sid.ebankingbackend.services;
 
-import org.sid.ebankingbackend.dtos.BankAccountDTO;
-import org.sid.ebankingbackend.dtos.CurrentBankAccountDTO;
-import org.sid.ebankingbackend.dtos.CustomerDTO;
-import org.sid.ebankingbackend.dtos.SavingBankAccountDTO;
+import org.sid.ebankingbackend.dtos.*;
 import org.sid.ebankingbackend.exceptions.BalanceNotSufficientExcepion;
 import org.sid.ebankingbackend.exceptions.BankAccountNotFound;
 import org.sid.ebankingbackend.exceptions.CustomerNotFoundException;
@@ -26,4 +23,7 @@ public interface BankAccountService {
     void credit(String accountId,double amount,String description) throws BankAccountNotFound;
     void transfer(String accountIdSource,String accountIdDestination,double amount) throws BalanceNotSufficientExcepion, BankAccountNotFound;
 
+    List<AccountOperationDTO> accountHistorique(String accountId);
+
+    AccountHistoryDTO getAccountHistorique(String accountId, int page, int size) throws BankAccountNotFound;
 }
